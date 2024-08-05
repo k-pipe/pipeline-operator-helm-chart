@@ -1,0 +1,129 @@
+{{- if .Values.rbac.create }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "pipeline.controllerRoleName" . }}
+rules:
+  - apiGroups:
+      - ""
+      - batch
+    resources:
+      - cronjobs
+      - jobs
+      - persistentvolumeclaims
+      - serviceaccounts
+      - configmaps
+      - events
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - pipeline.k-pipe.cloud
+    resources:
+      - pipelineschedules
+      - pipelinedefinitions
+      - pipelineruns
+      - pipelinejobs
+      - pipelineproblems
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - pipeline.k-pipe.cloud
+    resources:
+      - pipelineschedules/finalizers
+      - pipelinedefinitions/finalizers
+      - pipelineruns/finalizers
+      - pipelinejobs/finalizers
+      - pipelineproblems/finalizers
+    verbs:
+      - update
+  - apiGroups:
+      - pipeline.k-pipe.cloud
+    resources:
+      - pipelineschedules/status
+      - pipelinedefinitions/status
+      - pipelineruns/status
+      - pipelinejobs/status
+      - pipelineproblems/status
+    verbs:
+      - get
+      - patch
+      - update
+---
+# permissions to do leader election.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "pipeline.leaderRoleName" . }}
+  namespace: {{ .Release.Namespace | quote }}
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - coordination.k8s.io
+    resources:
+      - leases
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - create
+      - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "pipeline.controllerRoleName" . }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "pipeline.controllerRoleName" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "pipeline.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace | quote }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "pipeline.leaderRoleName" . }}
+  namespace: {{ .Release.Namespace | quote }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "pipeline.leaderRoleName" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "pipeline.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace | quote }}
+{{- end }}
