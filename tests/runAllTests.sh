@@ -7,7 +7,7 @@ init() {
    kind create cluster
    #helm repo add k-pipe https://k-pipe.github.io/pipeline-operator/
    kubectl create namespace k-pipe
-   helm install k-pipe ./charts/operator -n k-pipe
+   helm install k-pipe ./charts/pipeline -n k-pipe
    echo Waiting for deployment to get available
    kubectl wait deployment -n k-pipe k-pipe-operator --for condition=Available=True --timeout=300s
    if [[ $? != 0 ]]
