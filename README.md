@@ -17,16 +17,17 @@ Updates to the following files
  - [charts/pipeline/Chart.yaml](./charts/pipeline/Chart.yaml)
  - [version](./version)
  - [charts/pipeline/crds/*](./charts/pipeline/crds)
- - [charts/pipeline/templates/values.yaml](./charts/pipeline/templates/values.yaml) 
+ - [charts/pipeline/values.yaml](./charts/pipeline/values.yaml) 
  - [charts/pipeline/templates/NOTES.txt](./charts/pipeline/templates/NOTES.txt)
-are supposed to get pushed automatically into this repo from the build process of the controller (in [this github repo](https://github.com/k-pipe/pipeline-operator/)). 
+
+ - are supposed to get pushed automatically into this repo from the build process of the controller (in [this github repo](https://github.com/k-pipe/pipeline-operator/)). 
 
 Before releasing the helm chart, a set of [integration tests](./tests) will be executed (on a local [kind](https://kind.sigs.k8s.io/) kubernetes cluster).
 
 The chart is only released if all tests pass. The release process is a predefined github action which pushes into branch [gh-pages](https://github.com/k-pipe/pipeline-operator-helm-chart/tree/gh-pages).
 From there the chart gets published automatically (as [github pages](https://github.com/k-pipe/pipeline-operator-helm-chart/settings/pages)) as
-github [web site](https://k-pipe.github.io/pipeline-operator-helm-chart/). 
+web site under  [k-pipe.github.io/pipeline-operator-helm-chart](https://k-pipe.github.io/pipeline-operator-helm-chart). 
 
-This website is made accessible from the domain [helm.kpipe.cloud/operator](https://helm.kpipe.cloud/operator) by means of A/AAAA mapping of DNS entries for the domain to 
+This website is made accessible from the domain [helm.kpipe.cloud](https://helm.kpipe.cloud) by means of A/AAAA mapping of DNS entries for the domain to 
 one of the the github IP4/IP6 addresses.
 
