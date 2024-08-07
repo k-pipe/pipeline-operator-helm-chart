@@ -9,7 +9,13 @@ The following elements (found in the main branch of the repo) are required:
  - the chart definition [Chart.yaml](./charts/pipeline/Chart.yaml)
  - text file holding [current version](./version) tag
  - the [custom resource definitions](./charts/pipeline/crds) for setting up the pipeline CRDs  
+ - the charts default settings [charts/pipeline/values.yaml](./charts/pipeline/values.yaml)
  - kubernetes manifest templates are placed in folder [templates](./charts/pipeline/templates)
+   - deployment: [charts/pipeline/templates/deployment.yaml](./charts/pipeline/templates/deployment.yaml)
+   - service account: [charts/pipeline/templates/serviceaccount.yaml](./charts/pipeline/templates/serviceaccount.yaml)
+   - granting operator access to various resources: [charts/pipeline/templates/rbac.yaml](./charts/pipeline/templates/rbac.yaml)
+   - predefined roles for tenants: [charts/pipeline/templates/tenantroles.yaml](./charts/pipeline/templates/tenantroles.yaml)
+
 
 ## CICD process
 
@@ -17,10 +23,10 @@ Updates to the following files
  - [charts/pipeline/Chart.yaml](./charts/pipeline/Chart.yaml)
  - [version](./version)
  - [charts/pipeline/crds/*](./charts/pipeline/crds)
- - [charts/pipeline/values.yaml](./charts/pipeline/values.yaml) 
  - [charts/pipeline/templates/NOTES.txt](./charts/pipeline/templates/NOTES.txt)
 
- - are supposed to get pushed automatically into this repo from the build process of the controller (in [this github repo](https://github.com/k-pipe/pipeline-operator/)). 
+are supposed to get pushed automatically into this repo from the build process of the controller (in [this github repo](https://github.com/k-pipe/pipeline-operator/)). 
+
 
 Before releasing the helm chart, a set of [integration tests](./tests) will be executed (on a local [kind](https://kind.sigs.k8s.io/) kubernetes cluster).
 
