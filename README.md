@@ -29,16 +29,20 @@ spec:
     - id: stepa
       jobSpec:
         image: busybox
+        command: sh
+        args: ["-c","echo","world",">","/workdir/output/out.txt"]
     - id: stepb
       jobSpec:
         image: busybox
+        command: sh
+        args: ["-c","echo","Hello","|","paste","-'d'","-","/workdir/input/in.txt"]
     pipes:
     - from:
         stepId: stepa
-        name: name1
+        name: out.txt
       to:
         stepId: stepb
-        name: name2
+        name: in.txt
 ```
 
 Create the pipeline:
