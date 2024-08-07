@@ -31,3 +31,8 @@ web site under  [k-pipe.github.io/pipeline-operator-helm-chart](https://k-pipe.g
 This website is made accessible from the domain [helm.k-pipe.cloud](https://helm.k-pipe.cloud) by means of A/AAAA mapping of DNS entries for the domain to 
 one of the the github IP4/IP6 addresses.
 
+## Documentation location
+
+The [getting started page](https://helm.k-pipe.cloud) in the toot of the helm web site is defined by the [README.md in branch gh-pages](https://github.com/k-pipe/pipeline-operator-helm-chart/blob/gh-pages/README.md).
+The sources of the [full documentation](https://helm.k-pipe.cloud/doc) can be found in the [subdirectory doc](https://github.com/k-pipe/pipeline-operator-helm-chart/tree/gh-pages/doc) of the branch gh-pages.
+
