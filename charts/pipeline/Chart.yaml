@@ -1,5 +1,5 @@
 apiVersion: v2
-name: pipeline-controller
+name: operator
 description: A Helm chart for a Kubernetes operator to define, run and schedule pipelines
 type: application
 version: 0.9.20
