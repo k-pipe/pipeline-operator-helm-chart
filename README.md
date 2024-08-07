@@ -13,8 +13,12 @@ The following elements (found in the main branch of the repo) are required:
 
 ## CICD process
 
-Updates to the files [charts/pipeline/Chart.yaml](./charts/pipeline/Chart.yaml),[version](./version),[charts/pipeline/crds/*](./charts/pipeline/crds),
-[charts/pipeline/templates/values.yaml](./charts/pipeline/templates/values.yaml) and [charts/pipeline/templates/NOTES.txt](./charts/pipeline/templates/NOTES.txt)
+Updates to the following files 
+ - [charts/pipeline/Chart.yaml](./charts/pipeline/Chart.yaml)
+ - [version](./version)
+ - [charts/pipeline/crds/*](./charts/pipeline/crds)
+ - [charts/pipeline/templates/values.yaml](./charts/pipeline/templates/values.yaml) 
+ - [charts/pipeline/templates/NOTES.txt](./charts/pipeline/templates/NOTES.txt)
 are supposed to get pushed automatically into this repo from the build process of the controller (in [this github repo](https://github.com/k-pipe/pipeline-operator/)). 
 
 Before releasing the helm chart, a set of [integration tests](./tests) will be executed (on a local [kind](https://kind.sigs.k8s.io/) kubernetes cluster).
