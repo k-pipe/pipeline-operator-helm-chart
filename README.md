@@ -8,8 +8,8 @@ This page provides provides a helm chart for a kubernetes operator to define, ru
 On a kubernetes cluster of your choice (e.g. locally using [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)) install the operator with the following commands:
 
 ```
-helm repo add k-pipe https://k-pipe.github.io/pipeline-operator/
-helm install k-pipe k-pipe/pipeline-controller -n k-pipe
+helm repo add k-pipe https://helm.k-pipe.cloud
+helm install k-pipe k-pipe/operator -n k-pipe
 ```
 
 ### Define a pipeline
