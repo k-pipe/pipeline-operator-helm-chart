@@ -8,7 +8,7 @@ The following elements (found in the main branch of the repo) are required:
 
  - the chart definition [Chart.yaml](./charts/pipeline/Chart.yaml)
  - text file holding [current version](./version) tag
- - the [custom resource definitions](./charts/crds) for setting up the pipeline CRDs  
+ - the [custom resource definitions](./charts/pipeline/crds) for setting up the pipeline CRDs  
  - kubernetes manifest templates are placed in folder [templates](./charts/pipeline/templates)
 
 ## CICD process
