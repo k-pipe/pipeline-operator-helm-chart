@@ -25,7 +25,7 @@ Updates to the following files
  - [charts/pipeline/crds/*](./charts/pipeline/crds)
  - [charts/pipeline/templates/NOTES.txt](./charts/pipeline/templates/NOTES.txt)
 
-are supposed to get pushed automatically into this repo from the build process of the controller (in [this github repo](https://github.com/k-pipe/pipeline-operator/)). 
+are supposed to get pushed automatically into this repo from the build process of the pipeline controller docker image (which is done in [this github repo](https://github.com/k-pipe/pipeline-operator/)). 
 
 
 Before releasing the helm chart, a set of [integration tests](./tests) will be executed (on a local [kind](https://kind.sigs.k8s.io/) kubernetes cluster).
