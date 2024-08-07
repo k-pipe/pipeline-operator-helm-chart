@@ -28,6 +28,6 @@ The chart is only released if all tests pass. The release process is a predefine
 From there the chart gets published automatically (as [github pages](https://github.com/k-pipe/pipeline-operator-helm-chart/settings/pages)) as
 web site under  [k-pipe.github.io/pipeline-operator-helm-chart](https://k-pipe.github.io/pipeline-operator-helm-chart). 
 
-This website is made accessible from the domain [helm.kpipe.cloud](https://helm.kpipe.cloud) by means of A/AAAA mapping of DNS entries for the domain to 
+This website is made accessible from the domain [helm.k-pipe.cloud](https://helm.k-pipe.cloud) by means of A/AAAA mapping of DNS entries for the domain to 
 one of the the github IP4/IP6 addresses.
 
