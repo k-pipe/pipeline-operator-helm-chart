@@ -59,7 +59,7 @@ be accepted. The value of the first matching map entry will be used as value to 
 If `imageRepoClassLabel` is empty, no label will be assigned. However the map `imageRepoClassesMap` may still 
 be set, in order to restrict the allowable docker images (the labels of the map are then irrelevant).
 
-Note: `jobImagePrefix` can be used to shorten the docker image specs in pipeline definitions (and to avoid the impression
+The variable `jobImagePrefix` can be used to shorten the docker image specs in pipeline definitions (and to avoid the impression
 that arbitrary docker images might be specified). The prefix will be added before regex evaluation with the
 keys of `imageRepoClassesMap` takes place.
 
