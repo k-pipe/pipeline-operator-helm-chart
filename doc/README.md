@@ -1,13 +1,15 @@
 
+This page constitutes the documentation of the [k-pipe K8s operator](https://helm.k-pipe.cloud), which provides 
+an extension of kubernetes to define, execute and schedule processing pipelines.
+
 ## Table of contents
 
-[ToC]
-
-
 - [1 - Introduction](#1)
+- [1 - Introduction](#introduction)
 - [2 - Getting Started](#getting-started)
 - [3 - Reference](#reference)
     - [3.1 - Helm variables](#helm-variables)
+
 
 ## 1 - Introduction
 
@@ -81,3 +83,10 @@ The actions of the init container are specified by the following helm variables:
 
 The init script will be joined into one string (using the specified separator) that will be passed as one argument in the pod spec.
 
+## 1
+
+## Introduction
+
+# Introduction
+
+# 1
