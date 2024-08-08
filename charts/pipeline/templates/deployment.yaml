@@ -32,16 +32,32 @@ spec:
           args:
             - --leader-elect
           env:
+            - name: NODE_SELECTOR_MAP
+              value: "{{ .Values.env.nodeSelectorMap }}"
             - name: STORAGE_CLASS
               value: "{{ .Values.env.storageClass }}"
-            - name: FIXED_INIT_COMMANDS
-              value: "{{ .Values.env.fixedInitCommands }}"
             - name: IMAGE_REPO_CLASS_LABEL
               value: "{{ .Values.env.imageRepoClassLabel }}"
             - name: IMAGE_REPO_CLASSES_MAP
               value: "{{ .Values.env.imageRepoClassesMap }}"
-            - name: NODE_SELECTOR_MAP
-              value: "{{ .Values.env.nodeSelectorMap }}"
+            - name: JOB_IMAGE_PREFIX
+              value: "{{ .Values.env.jobImagePrefix }}"
+            - name: INIT_CONTAINER_IMAGE
+              value: "{{ .Values.env.initContainerImage }}"
+            - name: INIT_WORKDIR
+              value: "{{ .Values.env.initWorkdir }}"
+            - name: INIT_COMMAND
+              value: "{{ .Values.env.initCommand }}"
+            - name: INIT_SCRIPT_START
+              value: "{{ .Values.env.initScriptStart }}"
+            - name: INIT_SCRIPT_PIPE
+              value: "{{ .Values.env.initScriptPipe }}"
+            - name: INIT_SCRIPT_OUTPUT
+              value: "{{ .Values.env.initScriptOutput }}"
+            - name: INIT_SCRIPT_END
+              value: "{{ .Values.env.initScriptEnd }}"
+            - name: INIT_SCRIPT_SEPARATOR
+              value: "{{ .Values.env.initScriptSeparator }}"
           livenessProbe:
             httpGet:
               path: /healthz
