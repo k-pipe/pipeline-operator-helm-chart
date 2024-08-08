@@ -113,7 +113,7 @@ kubectl apply -f run.yaml
 
 ## Further information
 
-For more examples and details of the setup and a specification to all functionality provided by the k-pipe operator have a look at the [documentation](https://k-pipe.github.io/pipeline-operator/doc).
+For more examples and details of the setup and a specification to all functionality provided by the k-pipe operator have a look at the [documentation](https://helm.k-pipe.cloud/doc).
 
 The code for the operator can be found in this [github project](https://github.com/k-pipe/pipeline-operator).
 
