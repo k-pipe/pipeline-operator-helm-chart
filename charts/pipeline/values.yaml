@@ -62,5 +62,8 @@ tolerations: []
 affinity: {}
 
 env:
-  storageClass: standard
+  storageClass: "standard"
   fixedInitCommands: "mkdir input"
+  imageRepoClassLabel: ""
+  imageRepoClassesMap: ""
+  nodeSelectorMap: ""

@@ -1,0 +1,1 @@
+A simple pipeline with one step writing "Hello world"

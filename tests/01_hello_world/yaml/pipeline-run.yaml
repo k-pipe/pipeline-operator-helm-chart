@@ -1,0 +1,7 @@
+apiVersion: pipeline.k-pipe.cloud/v1
+kind: PipelineRun
+metadata:
+  name: "test-run"
+spec:
+  pipelineName: "hello-world"
+  versionPattern: "0.0.1"

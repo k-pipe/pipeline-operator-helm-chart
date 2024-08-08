@@ -1,0 +1,1 @@
+A smoke test: apply an empty pipeline definition and check if the custom resource was actually created and if a config map was created by operator.

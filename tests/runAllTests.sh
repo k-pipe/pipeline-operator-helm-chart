@@ -5,7 +5,6 @@ init() {
    echo "Setting up"
    echo "=========="
    kind create cluster
-   #helm repo add k-pipe https://k-pipe.github.io/pipeline-operator/
    kubectl create namespace k-pipe
    helm install k-pipe ./charts/pipeline -n k-pipe
    echo Waiting for deployment to get available

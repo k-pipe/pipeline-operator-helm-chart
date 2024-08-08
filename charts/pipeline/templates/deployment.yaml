@@ -36,6 +36,12 @@ spec:
               value: "{{ .Values.env.storageClass }}"
             - name: FIXED_INIT_COMMANDS
               value: "{{ .Values.env.fixedInitCommands }}"
+            - name: IMAGE_REPO_CLASS_LABEL
+              value: "{{ .Values.env.imageRepoClassLabel }}"
+            - name: IMAGE_REPO_CLASSES_MAP
+              value: "{{ .Values.env.imageRepoClassesMap }}"
+            - name: NODE_SELECTOR_MAP
+              value: "{{ .Values.env.nodeSelectorMap }}"
           livenessProbe:
             httpGet:
               path: /healthz

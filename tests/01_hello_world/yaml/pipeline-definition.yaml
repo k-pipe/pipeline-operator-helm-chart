@@ -1,0 +1,15 @@
+apiVersion: pipeline.k-pipe.cloud/v1
+kind: PipelineDefinition
+metadata:
+  name: hello-world-0.0.1
+spec:
+  name: hello-world
+  version: 0.0.1
+  pipelineStructure:
+    jobSteps:
+    - id: step-a
+      jobSpec:
+        image: busybox
+        command: ["sh"]
+        args: [ "-c", "echo hello world && sleep 60" ]
+    pipes:
