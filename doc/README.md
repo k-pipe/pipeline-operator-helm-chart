@@ -8,7 +8,7 @@ an extension of kubernetes to define, execute and schedule processing pipelines.
 - [2 - Getting Started](#2---getting-started)
 - [3 - Reference](#3---reference)
   - [3.1 - Helm variables](#31---helm-variables)
-    - [3.1.1 - Job specs](#311---job-specs)
+    - [3.1.1 - Kubernetes settings](#311---kubernetes-settings)
     - [3.1.2 - Image repository classification](#312---image-repository-classification)
     - [3.1.3 - Init container](#313---init-container)
 
@@ -31,13 +31,14 @@ as string in the format "key1=value1;key2=value2;...". An empty string will be i
 sequence of map entries is preserved and the implementation of the operator guarantees that map entries 
 will be processed in the same order as they occur in the string (there are some cases where the order of the entries matters).
 
-### 3.1.1 - Job specs
+### 3.1.1 - Kubernetes settings
 
-The following variables control certain generic aspects of all kubernetes Jobs created by PipelineJobs:
+The following variables control certain generic aspects of kubernetes resources created when executing pipeline runs:
 
-| Variable        | Type        | Default | Description                                        |
-|-----------------|-------------|---------|----------------------------------------------------|
-| nodeSelectorMap | string(map) | ""      | will be used as nodeSelector entry in the job spec |
+| Variable        | Type        | Default   | Description                                              |
+|-----------------|-------------|-----------|----------------------------------------------------------|
+| nodeSelectorMap | string(map) | ""        | will be used as nodeSelector entry in the job spec       |
+| storageClass    | string(map) | "default" | will be used to set storage class of persistent volumes  |
 
 ### 3.1.2 - Image repository classification
 
@@ -47,9 +48,9 @@ for various purposes in pod selectors.
 
 | Variable            | Type        | Default | Description                                                    |
 |---------------------|-------------|---------|----------------------------------------------------------------|
-| imageRepoClassLabel | string      |         | the label key to be used for assigning repo class labels       |
-| imageRepoClassesMap | string(map) |         | map from regex expressions to label values                     |
-| jobImagePrefix      | string      |         | a prefix that will be added to all payload docker image specs  |
+| imageRepoClassLabel | string      | ""      | the label key to be used for assigning repo class labels       |
+| imageRepoClassesMap | string(map) | ""      | map from regex expressions to label values                     |
+| jobImagePrefix      | string      | ""      | a prefix that will be added to all payload docker image specs  |
 
 If `imageRepoClassesMap` is not empty, only docker images that match any of the regex expressions in the key set will
 be accepted. The value of the first matching map entry will be used as value to be assigned to the label 
@@ -71,15 +72,15 @@ A kubernetes job issue by a PipelineJob consists of two containers:
 
 The actions of the init container are specified by the following helm variables:
 
-| Variable            | Type     | Default                               | Description                                                                                 |
-|---------------------|----------|---------------------------------------|---------------------------------------------------------------------------------------------|
-| initContainerImage  | string   | "bash"                                | docker image to be used for init container                                                  |
-| initWorkdir         | string   | "/workdir"                            | working directory in init containter                                                        |
-| initCommand         | []string | ["bash", "-c"]                        | docker image to be used for init container                                                  |
-| initScriptStart     | string   | "mkdir input"                         | commands to be issued in initContainer (before pipe specific commands)                      |
-| initScriptPipe      | string   | "ln -s {vol}/{source} input/{target}" | added for each pipe, {vol}=mounted volume, {source}/{target}=filename at in/out end of pipe |
-| initScriptOutput    | string   | "ln -s {vol} output"                  | commands to set path to output volume (added after pipe specific commands)                  |
-| initScriptEnd       | string   | "echo Initialization done"            | final commands to be issued in initContainer (after output command)                         |
-| initScriptSeparator | string   | " && "                                | separator string to be used for joining the init script                                     |
+| Variable            | Type   | Default                               | Description                                                                                 |
+|---------------------|--------|---------------------------------------|---------------------------------------------------------------------------------------------|
+| initContainerImage  | string | "bash"                                | docker image to be used for init container                                                  |
+| initWorkdir         | string | "/workdir"                            | working directory in init containter                                                        |
+| initCommand         | string | "bash -c"                             | shell command used to execute init script (will be split on spaces into a string array)     |
+| initScriptStart     | string | "mkdir input"                         | commands to be issued in initContainer (before pipe specific commands)                      |
+| initScriptPipe      | string | "ln -s {vol}/{source} input/{target}" | added for each pipe, {vol}=mounted volume, {source}/{target}=filename at in/out end of pipe |
+| initScriptOutput    | string | "ln -s {vol} output"                  | commands to set path to output volume (added after pipe specific commands)                  |
+| initScriptEnd       | string | "echo Initialization done"            | final commands to be issued in initContainer (after output command)                         |
+| initScriptSeparator | string | " && "                                | separator string to be used for joining the init script                                     |
 
 The init script will be joined into one string (using the specified separator) that will be passed as one argument in the pod spec.
