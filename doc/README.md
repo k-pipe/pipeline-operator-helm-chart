@@ -1,5 +1,5 @@
 
-This page constitutes the documentation of the [k-pipe K8s operator](https://helm.k-pipe.cloud), which provides 
+This page constitutes the documentation of the [k-pipe operator](https://helm.k-pipe.cloud), which provides 
 an extension of kubernetes to define, execute and schedule processing pipelines.
 
 ## Table of contents
