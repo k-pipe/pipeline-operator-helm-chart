@@ -35,10 +35,10 @@ will be processed in the same order as they occur in the string (there are some 
 
 The following variables control certain generic aspects of kubernetes resources created when executing pipeline runs:
 
-| Variable        | Type        | Default   | Description                                              |
-|-----------------|-------------|-----------|----------------------------------------------------------|
-| nodeSelectorMap | string(map) | ""        | will be used as nodeSelector entry in the job spec       |
-| storageClass    | string(map) | "default" | will be used to set storage class of persistent volumes  |
+| Variable        | Type        | Default    | Description                                              |
+|-----------------|-------------|------------|----------------------------------------------------------|
+| nodeSelectorMap | string(map) | ""         | will be used as nodeSelector entry in the job spec       |
+| storageClass    | string(map) | "standard" | will be used to set storage class of persistent volumes  |
 
 ### 3.1.2 - Image repository classification
 
