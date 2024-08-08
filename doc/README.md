@@ -4,12 +4,13 @@ an extension of kubernetes to define, execute and schedule processing pipelines.
 
 ## Table of contents
 
-- [1 - Introduction](#1)
-- [1 - Introduction](#introduction)
-- [2 - Getting Started](#getting-started)
-- [3 - Reference](#reference)
-    - [3.1 - Helm variables](#helm-variables)
-
+- [1 - Introduction](#1---introduction)
+- [2 - Getting Started](#2---getting-started)
+- [3 - Reference](#3---reference)
+  - [3.1 - Helm variables](#31---helm-variables)
+    - [3.1.1 - Job specs](#311---job-specs)
+    - [3.1.2 - Image repository classification](#312---image-repository-classification)
+    - [3.1.3 - Init container](#313---init-container)
 
 ## 1 - Introduction
 
@@ -82,11 +83,3 @@ The actions of the init container are specified by the following helm variables:
 | initScriptSeparator | string   | " && "                                | separator string to be used for joining the init script                                     |
 
 The init script will be joined into one string (using the specified separator) that will be passed as one argument in the pod spec.
-
-## 1
-
-## Introduction
-
-# Introduction
-
-# 1
