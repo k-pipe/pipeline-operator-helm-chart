@@ -79,7 +79,7 @@ The actions of the init container are specified by the following helm variables:
 | initCommand         | string | "bash -c"                             | shell command used to execute init script (will be split on spaces into a string array)     |
 | initScriptStart     | string | "mkdir input"                         | commands to be issued in initContainer (before pipe specific commands)                      |
 | initScriptPipe      | string | "ln -s {vol}/{source} input/{target}" | added for each pipe, {vol}=mounted volume, {source}/{target}=filename at in/out end of pipe |
-| initScriptOutput    | string | "ln -s {vol} output"                  | commands to set path to output volume (added after pipe specific commands)                  |
+| initScriptOutput    | string | "ln -s {vol} output"                  | commands to set path to output volume (after pipe specific commands), {vol}=mounted volume  |
 | initScriptEnd       | string | "echo Initialization done"            | final commands to be issued in initContainer (after output command)                         |
 | initScriptSeparator | string | " && "                                | separator string to be used for joining the init script                                     |
 
