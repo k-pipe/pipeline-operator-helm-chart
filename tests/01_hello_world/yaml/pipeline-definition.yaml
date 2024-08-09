@@ -8,8 +8,5 @@ spec:
   pipelineStructure:
     jobSteps:
     - id: step-a
-      jobSpec:
-        image: busybox
-        command: ["sh"]
-        args: [ "-c", "echo hello world && sleep 60" ]
-    pipes:
+      image: busybox
+      command: ["sh", "-c", "echo hello world && sleep 60" ]
