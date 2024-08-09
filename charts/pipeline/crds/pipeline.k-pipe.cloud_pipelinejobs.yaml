@@ -51,9 +51,19 @@ spec:
           spec:
             description: PipelineJobSpec defines the specs of a PipelineStep
             properties:
+              args:
+                items:
+                  type: string
+                type: array
+              command:
+                items:
+                  type: string
+                type: array
               description:
                 type: string
               id:
+                type: string
+              image:
                 type: string
               inputVolumes:
                 items:
@@ -82,22 +92,16 @@ spec:
                   activeDeadlineSeconds:
                     format: int64
                     type: integer
-                  args:
-                    items:
-                      type: string
-                    type: array
                   backoffLimit:
                     format: int32
                     type: integer
-                  command:
-                    items:
-                      type: string
-                    type: array
-                  image:
-                    type: string
                   imagePullPolicy:
                     description: PullPolicy describes a policy for if/when to pull
                       a container image
+                    type: string
+                  maxCPU:
+                    type: string
+                  maxMemory:
                     type: string
                   serviceAccountName:
                     type: string
@@ -111,8 +115,6 @@ spec:
                     type: integer
                   workingDir:
                     type: string
-                required:
-                - image
                 type: object
               pipelineName:
                 type: string
@@ -128,6 +130,7 @@ spec:
                 type: string
             required:
             - id
+            - image
             - jobSpec
             - pipelineName
             - pipelineRun
