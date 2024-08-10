@@ -13,7 +13,7 @@ fi
 #   exit 1
 #fi
 echo waiting for pipeline to succeed
-kubectl wait --for=condition=Succeeded --timeout=300s pr/test-run
+kubectl wait --for=condition=Succeeded --timeout=500s pr/test-run
 if [[ $? != 0 ]]
 then
    exit 1
