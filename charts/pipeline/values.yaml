@@ -75,8 +75,8 @@ env:
   initContainerImage: "bash"
   initWorkdir: "/workdir"
   initCommand: "bash -c"
-  initScriptStart: “mkdir input”
-  initScriptPipe: “ln -s {vol}/{source} input/{target}”
-  initScriptOutput: “ln -s {vol} output”
-  initScriptEnd: “echo Initialization done”
-  initScriptSeparator: ” && “
+  initScriptStart: "mkdir input"
+  initScriptPipe: "ln -s {vol}/{source} input/{target}"
+  initScriptOutput: "ln -s {vol} output"
+  initScriptEnd: "echo Initialization done"
+  initScriptSeparator: " && "
