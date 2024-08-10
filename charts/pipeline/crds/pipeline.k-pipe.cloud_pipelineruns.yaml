@@ -249,6 +249,8 @@ spec:
                               type: string
                             maxMemory:
                               type: string
+                            maxStorage:
+                              type: string
                             serviceAccountName:
                               type: string
                             specification:
