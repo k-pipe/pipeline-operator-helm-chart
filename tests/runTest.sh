@@ -2,7 +2,7 @@
 
 echoerr() { echo "$@" 1>&2; }
 
-sh tests/ensureKindExists.sh
+bash tests/ensureKindExists.sh
 echo ""
 cat "$1"description.txt
 echo ""
