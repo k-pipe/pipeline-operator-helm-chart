@@ -9,4 +9,4 @@ spec:
     jobSteps:
     - id: step-a
       image: busybox
-      command: ["sh", "-c", "echo hello world && sleep 60" ]
+      command: ["sh", "-c", "echo hello world" ]
