@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: schedule-pipeline-runs
+rules:
+  - apiGroups: ["pipeline.k-pipe.cloud"]
+    resources: ["pipelineruns"]
+    verbs: ["create", "get", "list", "watch"]
