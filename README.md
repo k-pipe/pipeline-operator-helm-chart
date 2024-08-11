@@ -1,15 +1,21 @@
 
-This page provides provides a helm chart for a kubernetes operator to define, run and schedule pipelines. 
+This page provides provides a helm chart for a Kubernetes operator to define, run and schedule pipelines. 
 
-## Getting started 
+## Getting Started 
 
 ### Installation 
 
-On a kubernetes cluster of your choice (e.g. locally using [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)) install the operator with the following commands:
+On a K8s cluster of your choice (e.g. a locally running [kind](https://kind.sigs.k8s.io/docs/user/quick-start/) cluster) install the operator using the following commands:
 
 ```
 helm repo add k-pipe https://helm.k-pipe.cloud
+kubectl create namespace k-pipe
 helm install k-pipe k-pipe/operator -n k-pipe
+```
+
+Wait for an operator pod to go live in the `k-pipe' namespace:
+```
+kubectl wait deployment -n k-pipe k-pipe-operator --for condition=Available=True --timeout=300s
 ```
 
 ### Define a pipeline
@@ -20,29 +26,15 @@ Create the file `pipeline.yaml`:
 apiVersion: pipeline.k-pipe.cloud/v1
 kind: PipelineDefinition
 metadata:
-  name: "demo-pipeline-1.0.0"
+  name: "hello-world-1.0.0"
 spec:
-  name: "demo-pipeline"
+  name: "hello-world"
   version: "1.0.0"
   pipelineStructure:
     jobSteps:
-    - id: stepa
-      jobSpec:
-        image: busybox
-        command: sh
-        args: ["-c","echo","world",">","/workdir/output/out.txt"]
-    - id: stepb
-      jobSpec:
-        image: busybox
-        command: sh
-        args: ["-c","echo","Hello","|","paste","-'d'","-","/workdir/input/in.txt"]
-    pipes:
-    - from:
-        stepId: stepa
-        name: out.txt
-      to:
-        stepId: stepb
-        name: in.txt
+    - id: step1
+      image: busybox
+      command: ["sh", "-c", "echo hello world && sleep 30"]
 ```
 
 Create the pipeline:
@@ -65,9 +57,9 @@ Create the file `run.yaml`:
 apiVersion: pipeline.k-pipe.cloud/v1
 kind: PipelineRun
 metadata:
-  name: "test-run"
+  name: "my-first-run"
 spec:
-  pipelineName: "demo-pipeline"
+  pipelineName: "hello-world"
   versionPattern: "1.0.0"
 ```
 
@@ -77,38 +69,47 @@ Start the pipeline run:
 kubectl apply -f run.yaml
 ```
 
-Observe how the pipeline is executed:
+Observe the operator spinning up a pod:
 
 ```
 kubectl get pods -w
 ```
 
-You might also observe the state of the pipeline run change:
+Alternatively, restart the run and now follow the state of the pipeline execution looking at the run resource (`pr` is an
+abbreviation for `pipelinerun`):
 
 ```
+kubectl delete -f run.yaml
+kubectl apply -f run.yaml
 kubectl get pr test-run -w
 ```
 
-### Schedule a pipeline
+If you interrupt (with `CTRL-c`) **while** the pod is still *running*, you may check the logs:
 
+```
+kubectl logs job/my-first-run-step1 -c main
+```
+
+### Schedule a pipeline
 
 Create the file `schedule.yaml`:
 
 ```
 apiVersion: pipeline.k-pipe.cloud/v1
 kind: PipelineSchedule
-...
+metadata:
+  name: "my-first-schedule"
 spec:
-  pipeline: "demo-pipeline"
+  pipelineName: "hello-world"
   schedules:
-    - cronSpec: "0 * * * *"
+    - cronSpec: "* * * * *"
       versionPattern: "1.0.0"
 ```
 
-Schedule the pipeline to be run automatically every full hour:
+After applying this, you may observe your pipeline being executed every minute:
 
 ```
-kubectl apply -f run.yaml
+kubectl apply -f schedule.yaml
 ```
 
 ## Further information
