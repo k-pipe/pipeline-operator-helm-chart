@@ -1,1 +1,1 @@
-Installed k-pipe operator chart version 0.9.32
+Installed k-pipe operator chart version 0.9.33
