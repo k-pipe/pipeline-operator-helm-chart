@@ -60,6 +60,8 @@ spec:
                 type: array
               description:
                 type: string
+              recommendation:
+                type: string
               resourceKind:
                 type: string
               resourceName:
@@ -69,6 +71,7 @@ spec:
             required:
             - concerned
             - description
+            - recommendation
             - resourceKind
             - resourceName
             - type
