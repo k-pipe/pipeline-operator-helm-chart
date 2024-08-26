@@ -35,8 +35,14 @@ spec:
     - jsonPath: .status.numStepsTotal
       name: Total
       type: integer
-    - jsonPath: .status.state
-      name: State
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
+    - jsonPath: .status.status
+      name: Status
+      type: string
+    - jsonPath: .status.lastMessage
+      name: LastMessage
       type: string
     name: v1
     schema:
@@ -152,6 +158,11 @@ spec:
                   - type
                   type: object
                 type: array
+              lastMessage:
+                type: string
+              lastUpdate:
+                format: date-time
+                type: string
               numStepsActive:
                 type: integer
               numStepsFailed:
@@ -297,7 +308,7 @@ spec:
                 type: object
               pipelineVersion:
                 type: string
-              state:
+              status:
                 type: string
             required:
             - numStepsActive

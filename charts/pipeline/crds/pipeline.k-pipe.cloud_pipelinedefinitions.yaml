@@ -16,7 +16,23 @@ spec:
     singular: pipelinedefinition
   scope: Namespaced
   versions:
-  - name: v1
+  - additionalPrinterColumns:
+    - jsonPath: .spec.name
+      name: Pipeline
+      type: string
+    - jsonPath: .spec.version
+      name: Version
+      type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
+    - jsonPath: .status.status
+      name: Status
+      type: string
+    - jsonPath: .status.lastMessage
+      name: LastMessage
+      type: string
+    name: v1
     schema:
       openAPIV3Schema:
         description: Pipeline is the Schema for the pipelines API
@@ -226,7 +242,7 @@ spec:
             - version
             type: object
           status:
-            description: ScheduleStatus defines the observed state of Schedule
+            description: defines the observed state of a pipeline definition
             properties:
               conditions:
                 items:
@@ -297,7 +313,12 @@ spec:
                   - type
                   type: object
                 type: array
-              state:
+              lastMessage:
+                type: string
+              lastUpdate:
+                format: date-time
+                type: string
+              status:
                 type: string
             type: object
         type: object

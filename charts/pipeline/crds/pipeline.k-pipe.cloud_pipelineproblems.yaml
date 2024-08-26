@@ -29,6 +29,9 @@ spec:
     - jsonPath: .status.description
       name: description
       type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
     name: v1
     schema:
       openAPIV3Schema:
@@ -148,7 +151,12 @@ spec:
                   - type
                   type: object
                 type: array
-              state:
+              lastMessage:
+                type: string
+              lastUpdate:
+                format: date-time
+                type: string
+              status:
                 type: string
             type: object
         type: object

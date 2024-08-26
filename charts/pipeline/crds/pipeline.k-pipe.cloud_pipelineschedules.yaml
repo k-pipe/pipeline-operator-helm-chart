@@ -29,6 +29,15 @@ spec:
     - jsonPath: .status.timeZone
       name: TimeZone
       type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
+    - jsonPath: .status.status
+      name: Status
+      type: string
+    - jsonPath: .status.lastMessage
+      name: LastMessage
+      type: string
     name: v1
     schema:
       openAPIV3Schema:
@@ -158,7 +167,12 @@ spec:
                 type: array
               cronSpec:
                 type: string
-              state:
+              lastMessage:
+                type: string
+              lastUpdate:
+                format: date-time
+                type: string
+              status:
                 type: string
               timeZone:
                 type: string

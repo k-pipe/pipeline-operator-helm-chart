@@ -23,8 +23,14 @@ spec:
     - jsonPath: .spec.jobSpec.image
       name: Image
       type: string
-    - jsonPath: .status.state
-      name: State
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
+    - jsonPath: .status.status
+      name: Status
+      type: string
+    - jsonPath: .status.lastMessage
+      name: LastMessage
       type: string
     name: v1
     schema:
@@ -213,7 +219,12 @@ spec:
                   - type
                   type: object
                 type: array
-              state:
+              lastMessage:
+                type: string
+              lastUpdate:
+                format: date-time
+                type: string
+              status:
                 type: string
             type: object
         type: object
