@@ -1,0 +1,1 @@
+A simple pipeline two independent steps (no data flow from first to second step)
