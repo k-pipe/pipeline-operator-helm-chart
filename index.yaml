@@ -2,6 +2,17 @@ apiVersion: v1
 entries:
   operator:
   - apiVersion: v2
+    appVersion: 0.9.40
+    created: "2024-09-01T19:15:05.877493668Z"
+    description: A Helm chart for a Kubernetes operator to define, run and schedule
+      pipelines
+    digest: aeca2f60d71a19a85915acd7b38f5b21a09bff5eb28367ccfe21beb8960dd400
+    name: operator
+    type: application
+    urls:
+    - https://github.com/k-pipe/pipeline-operator-helm-chart/releases/download/operator-0.9.40/operator-0.9.40.tgz
+    version: 0.9.40
+  - apiVersion: v2
     appVersion: 0.9.38
     created: "2024-08-26T16:27:06.269752541Z"
     description: A Helm chart for a Kubernetes operator to define, run and schedule
@@ -222,4 +233,4 @@ entries:
     urls:
     - https://github.com/k-pipe/operator/releases/download/pipeline-controller-0.9.10/pipeline-controller-0.9.10.tgz
     version: 0.9.10
-generated: "2024-08-26T16:27:06.269886843Z"
+generated: "2024-09-01T19:15:05.877624543Z"
