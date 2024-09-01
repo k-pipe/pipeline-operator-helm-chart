@@ -13,7 +13,3 @@ spec:
     - id: step-b
       image: busybox
       command: ["sh", "-c", "echo world" ]
-    sharedSpecs:
-      - stepPattern: "*"
-        jobSpec:
-         imagePullPolicy: Never
