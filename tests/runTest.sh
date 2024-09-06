@@ -35,6 +35,11 @@ if [[ `grep -c '' errlogs.txt` != 0 ]]
 then
   echoerr "Detected errors in operator logs"
   cat errlogs.txt
+  echo ""
+  echo "============================"
+  echo "====== Complete logs ======="
+  echo "============================"
+  cat logs.txt
   exit 1
 fi
 echo No problems in operator logs detected
