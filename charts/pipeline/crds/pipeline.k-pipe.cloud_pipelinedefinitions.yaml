@@ -106,7 +106,6 @@ spec:
                             stepId:
                               type: string
                           required:
-                          - name
                           - stepId
                           type: object
                         to:
@@ -118,7 +117,6 @@ spec:
                             stepId:
                               type: string
                           required:
-                          - name
                           - stepId
                           type: object
                       required:
