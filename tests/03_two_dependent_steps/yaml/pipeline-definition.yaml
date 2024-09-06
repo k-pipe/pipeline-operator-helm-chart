@@ -1,15 +1,20 @@
 apiVersion: pipeline.k-pipe.cloud/v1
 kind: PipelineDefinition
 metadata:
-  name: hello-world-2-0.0.1
+  name: two-steps-0.0.1
 spec:
-  name: hello-world-2
+  name: two-steps
   version: 0.0.1
   pipelineStructure:
     jobSteps:
     - id: step-a
       image: busybox
-      command: ["sh", "-c", "echo hello" ]
+      command: ["sh", "-c", "sleep 20" ]
     - id: step-b
       image: busybox
-      command: ["sh", "-c", "echo world" ]
+      command: ["sleep", "2" ]
+    pipes:
+      - from:
+          stepId: step-a
+        to:
+          stepId: step-b

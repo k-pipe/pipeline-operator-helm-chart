@@ -3,5 +3,5 @@ kind: PipelineRun
 metadata:
   name: "test-run"
 spec:
-  pipelineName: "hello-world-2"
+  pipelineName: "two-steps"
   versionPattern: "0.0.1"

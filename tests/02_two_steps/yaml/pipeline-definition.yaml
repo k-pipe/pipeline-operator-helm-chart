@@ -1,0 +1,15 @@
+apiVersion: pipeline.k-pipe.cloud/v1
+kind: PipelineDefinition
+metadata:
+  name: two-steps-0.0.1
+spec:
+  name: two-steps
+  version: 0.0.1
+  pipelineStructure:
+    jobSteps:
+    - id: step-a
+      image: busybox
+      command: ["sh", "-c", "sleep 20" ]
+    - id: step-b
+      image: busybox
+      command: ["sh", "-c", "sleep 1" ]
