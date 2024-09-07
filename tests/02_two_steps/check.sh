@@ -6,6 +6,12 @@ if [[ $? != 0 ]]
 then
    exit 1
 fi
+
+for (( i=0; i<20; ++i)); do
+    kubectl get jobs
+    sleep 1
+done
+
 sleep 2
 echo waiting for step-b to complete
 kubectl wait --for=condition=complete --timeout=60s job/test-run-step-b
