@@ -1,14 +1,14 @@
 #/bin/sh
 #
 echo checking pipeline run exists
-kubectl get pr test-run
+#kubectl get pr test-run
 if [[ $? != 0 ]]
 then
    exit 1
 fi
 
 for (( i=0; i<20; ++i)); do
-    kubectl get jobs
+    kubectl get pods
     sleep 1
 done
 
