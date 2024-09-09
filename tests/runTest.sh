@@ -39,17 +39,17 @@ then
   echo "============================"
   echo "====== Complete logs ======="
   echo "============================"
-  cat logs.txt | sed "s# *{.*$##"
+  cat logs.txt | sed 's# *{.*$##'
   echo ""
   echo "============================"
   echo "======    PR logs    ======="
   echo "============================"
-  cat logs.txt | sed "s# *{.*$##" | grep "[PR]"
+  cat logs.txt | sed 's# *{.*$##' | grep "[PR]"
   echo ""
   echo "============================"
   echo "======    PJ logs    ======="
   echo "============================"
-  cat logs.txt | sed "s# *{.*$##" | grep "[PJ]"
+  cat logs.txt | sed 's# *{.*$##' | grep "[PJ]"
   exit 1
 fi
 echo No problems in operator logs detected
