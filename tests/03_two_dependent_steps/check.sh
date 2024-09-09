@@ -31,6 +31,7 @@ then
    echo "Error: Step a is still running"
    exit 1
 fi
+echo "OK, step a is gone (as expected)"
 echo wait for pipeline to succeed
 kubectl wait --for=condition=Succeeded --timeout=500s pr/test-run
 if [[ $? != 0 ]]
