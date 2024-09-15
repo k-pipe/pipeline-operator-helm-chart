@@ -119,8 +119,9 @@ In order to run workloads with autoscaling of required ressources, we recommend
 using a Google Kubernetes Engine (GKE) cluster in autopilot mode.
 
 The setup of one or multiple GKE autopilot clusters with the pipeline operator 
-already deployed is greatly simplified [using a terraform module](https://github.com/k-pipe/terraform-module-gke-autopilot/blob/main/example/README.md).
+already deployed is greatly simplified [using this terraform module](https://github.com/k-pipe/terraform-module-gke-autopilot).
 
+To try it out follow the instructions given in [this example](https://github.com/k-pipe/terraform-module-gke-autopilot/blob/main/example/README.md).
 
 ## Further information
 
