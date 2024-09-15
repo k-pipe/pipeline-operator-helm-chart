@@ -5,7 +5,7 @@ This page provides provides a helm chart for a Kubernetes operator to define, ru
 
 ### Installation 
 
-On a K8s cluster of your choice (e.g. a locally running [kind](https://kind.sigs.k8s.io/docs/user/quick-start/) cluster) install the operator using the following commands:
+On a K8s cluster of your choice (simplest way is to run one locally using [kind](https://kind.sigs.k8s.io/docs/user/quick-start/) install the operator using the following commands:
 
 ```
 helm repo add k-pipe https://helm.k-pipe.cloud
@@ -111,6 +111,16 @@ After applying this, you may observe your pipeline being executed every minute:
 ```
 kubectl apply -f schedule.yaml
 ```
+
+## Run operator in GKE autopilot
+
+For production use, running the cluster locally is obviously not a good idea. 
+In order to run workloads with autoscaling of required ressources, we recommend 
+using a Google Kubernetes Engine (GKE) cluster in autopilot mode.
+
+The setup of one or multiple GKE autopilot clusters with the pipeline operator 
+already deployed is greatly simplified [using a terraform module](https://github.com/k-pipe/terraform-module-gke-autopilot/blob/main/example/README.md).
+
 
 ## Further information
 
