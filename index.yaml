@@ -2,6 +2,94 @@ apiVersion: v1
 entries:
   operator:
   - apiVersion: v2
+    appVersion: 0.9.47
+    created: "2024-09-09T17:24:51.50357925Z"
+    description: A Helm chart for a Kubernetes operator to define, run and schedule
+      pipelines
+    digest: 1d3e2008171053fc965780e6fe75ed2abc4385df0b9575524786eb1ca4e3d44c
+    name: operator
+    type: application
+    urls:
+    - https://github.com/k-pipe/pipeline-operator-helm-chart/releases/download/operator-0.9.47/operator-0.9.47.tgz
+    version: 0.9.47
+  - apiVersion: v2
+    appVersion: 0.9.41
+    created: "2024-09-06T15:58:51.179623948Z"
+    description: A Helm chart for a Kubernetes operator to define, run and schedule
+      pipelines
+    digest: 7793e4751d07aa92b4f4ec6b153ec704bf7a429022c29f3a3b5415a6a3df721b
+    name: operator
+    type: application
+    urls:
+    - https://github.com/k-pipe/pipeline-operator-helm-chart/releases/download/operator-0.9.41/operator-0.9.41.tgz
+    version: 0.9.41
+  - apiVersion: v2
+    appVersion: 0.9.40
+    created: "2024-09-01T19:15:05.877493668Z"
+    description: A Helm chart for a Kubernetes operator to define, run and schedule
+      pipelines
+    digest: aeca2f60d71a19a85915acd7b38f5b21a09bff5eb28367ccfe21beb8960dd400
+    name: operator
+    type: application
+    urls:
+    - https://github.com/k-pipe/pipeline-operator-helm-chart/releases/download/operator-0.9.40/operator-0.9.40.tgz
+    version: 0.9.40
+  - apiVersion: v2
+    appVersion: 0.9.38
+    created: "2024-08-26T16:27:06.269752541Z"
+    description: A Helm chart for a Kubernetes operator to define, run and schedule
+      pipelines
+    digest: b50b0bbbef7a5790b32156f480f0e553c1dee393306770047f1fd81428420e0c
+    name: operator
+    type: application
+    urls:
+    - https://github.com/k-pipe/pipeline-operator-helm-chart/releases/download/operator-0.9.38/operator-0.9.38.tgz
+    version: 0.9.38
+  - apiVersion: v2
+    appVersion: 0.9.37
+    created: "2024-08-21T10:50:06.593664525Z"
+    description: A Helm chart for a Kubernetes operator to define, run and schedule
+      pipelines
+    digest: 5de47d4200a8533394630e7424f72082bdb89e862e7210b37f883d8907439ecd
+    name: operator
+    type: application
+    urls:
+    - https://github.com/k-pipe/pipeline-operator-helm-chart/releases/download/operator-0.9.37/operator-0.9.37.tgz
+    version: 0.9.37
+  - apiVersion: v2
+    appVersion: 0.9.34
+    created: "2024-08-18T14:54:46.118110076Z"
+    description: A Helm chart for a Kubernetes operator to define, run and schedule
+      pipelines
+    digest: 9c059dd27a8708ea741af6387741e56d9eac8a18201fea2a4887e668527c5161
+    name: operator
+    type: application
+    urls:
+    - https://github.com/k-pipe/pipeline-operator-helm-chart/releases/download/operator-0.9.34/operator-0.9.34.tgz
+    version: 0.9.34
+  - apiVersion: v2
+    appVersion: 0.9.33
+    created: "2024-08-16T16:34:17.197251013Z"
+    description: A Helm chart for a Kubernetes operator to define, run and schedule
+      pipelines
+    digest: 1fee1799e464538a7b21be5bf437cddc8c21166618d4cb9194d4b331c0bb23a2
+    name: operator
+    type: application
+    urls:
+    - https://github.com/k-pipe/pipeline-operator-helm-chart/releases/download/operator-0.9.33/operator-0.9.33.tgz
+    version: 0.9.33
+  - apiVersion: v2
+    appVersion: 0.9.30
+    created: "2024-08-11T11:42:19.958274603Z"
+    description: A Helm chart for a Kubernetes operator to define, run and schedule
+      pipelines
+    digest: 70fc89a73a9e1983fc4b2d7a5c6f0dc9077df7cfba99c623068a236398f80a10
+    name: operator
+    type: application
+    urls:
+    - https://github.com/k-pipe/pipeline-operator-helm-chart/releases/download/operator-0.9.30/operator-0.9.30.tgz
+    version: 0.9.30
+  - apiVersion: v2
     appVersion: 0.9.29
     created: "2024-08-10T22:02:48.873892813Z"
     description: A Helm chart for a Kubernetes operator to define, run and schedule
@@ -167,4 +255,4 @@ entries:
     urls:
     - https://github.com/k-pipe/operator/releases/download/pipeline-controller-0.9.10/pipeline-controller-0.9.10.tgz
     version: 0.9.10
-generated: "2024-08-10T22:02:48.873948297Z"
+generated: "2024-09-09T17:24:51.503720935Z"
