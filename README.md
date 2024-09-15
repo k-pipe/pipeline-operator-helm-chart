@@ -5,7 +5,8 @@ This page provides provides a helm chart for a Kubernetes operator to define, ru
 
 ### Installation 
 
-On a K8s cluster of your choice (simplest way is to run one locally using [kind](https://kind.sigs.k8s.io/docs/user/quick-start/) install the operator using the following commands:
+On a K8s cluster of your choice (simplest way is to run one locally using [kind](https://kind.sigs.k8s.io/docs/user/quick-start/))
+install the operator using the following commands:
 
 ```
 helm repo add k-pipe https://helm.k-pipe.cloud
