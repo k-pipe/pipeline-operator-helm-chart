@@ -128,8 +128,6 @@ To try it out follow the instructions given in [this example](https://github.com
 
 For more examples and details of the setup and a specification to all functionality provided by the k-pipe operator have a look at the [documentation](https://helm.k-pipe.cloud/doc).
 
-The code for the operator can be found in this [github project](https://github.com/k-pipe/pipeline-operator).
-
 ## Licensing
 
 TBD.
