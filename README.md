@@ -113,6 +113,19 @@ After applying this, you may observe your pipeline being executed every minute:
 kubectl apply -f schedule.yaml
 ```
 
+### Cleanup resources
+
+First as an exercise try to find out which other kubernetes ressources are involved when defining/running/scheduling a 
+pipeline (HINT: cm,sa,cj,job,pod,pvc,pv).
+
+However, instances of those resources are marked with an `ownership reference` and will thus be cleaned up 
+together with the owning resources. To get back to a clean state (in your current namespace), it suffices
+to remove all created pipeline definitions/runs/schedules:
+
+```
+kubectl delete pd,pr,ps --all
+```
+
 ## Run operator in GKE autopilot
 
 For production use, running the cluster locally is obviously not a good idea. 
