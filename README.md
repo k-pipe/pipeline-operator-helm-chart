@@ -124,11 +124,13 @@ already deployed is greatly simplified [using this terraform module](https://git
 
 To try it out follow the instructions given in [this example](https://github.com/k-pipe/terraform-module-gke-autopilot/blob/main/example/README.md).
 
+### Limitations ok GKE
+
+Due to lack of permissions, the scheduling of pipelines is not working in GKE clusters. One of the coming releases will 
+fix this.
+
 ## Further information
 
 For more examples and details of the setup and a specification to all functionality provided by the k-pipe operator have a look at the [documentation](https://helm.k-pipe.cloud/doc).
 
-## Licensing
-
-TBD.
 
