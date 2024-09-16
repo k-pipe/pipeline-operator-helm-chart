@@ -147,6 +147,8 @@ spec:
                               type: string
                             maxCPU:
                               type: string
+                            maxGpuMemory:
+                              type: string
                             maxMemory:
                               type: string
                             maxStorage:
@@ -213,6 +215,8 @@ spec:
                         a container image
                       type: string
                     maxCPU:
+                      type: string
+                    maxGpuMemory:
                       type: string
                     maxMemory:
                       type: string

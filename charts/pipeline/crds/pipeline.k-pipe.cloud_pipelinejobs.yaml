@@ -107,6 +107,8 @@ spec:
                     type: string
                   maxCPU:
                     type: string
+                  maxGpuMemory:
+                    type: string
                   maxMemory:
                     type: string
                   maxStorage:
