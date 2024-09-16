@@ -14,7 +14,15 @@ an extension of kubernetes to define, execute and schedule processing pipelines 
 
 ## 1 - Introduction
 
+This helm chart deploys custom resource definitions (CRD) and a pipeline operator (plus a few additional ressources)
+in kubernetes. Using those, the definition of workflows/pipelines/directed acyclic graphs (all synonyms for the same
+concept) and their execution becomes possible on a plain kubernetes cluster (in a native fashion,
+i.e. without running any additional services).
+
 ## 2 - Getting Started
+
+For a first tour and a hands-on experience, we recommend to follow the examples in the 
+[helm chart's top level README.md](..)
 
 ## 3 - Reference
 
