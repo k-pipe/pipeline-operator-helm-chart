@@ -116,7 +116,7 @@ kubectl apply -f schedule.yaml
 ## Run operator in GKE autopilot
 
 For production use, running the cluster locally is obviously not a good idea. 
-In order to run workloads with autoscaling of required ressources, we recommend 
+In order to run workloads with autoscaling of required resources, we recommend 
 using a Google Kubernetes Engine (GKE) cluster in autopilot mode.
 
 The setup of one or multiple GKE autopilot clusters with the pipeline operator 
