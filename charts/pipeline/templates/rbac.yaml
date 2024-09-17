@@ -14,6 +14,7 @@ rules:
       - serviceaccounts
       - configmaps
       - events
+      - namespaces
     verbs:
       - create
       - delete
