@@ -82,4 +82,4 @@ env:
   initScriptSeparator: " && "
 
   # resource estimation
-  resourceEstimationService: """
+  resourceEstimationService: ""
