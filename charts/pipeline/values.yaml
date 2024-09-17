@@ -80,3 +80,6 @@ env:
   initScriptOutput: "ln -s {vol} output"
   initScriptEnd: "echo Initialization done"
   initScriptSeparator: " && "
+
+  # resource estimation
+  resourceEstimationService: """

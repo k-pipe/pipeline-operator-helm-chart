@@ -58,6 +58,8 @@ spec:
               value: "{{ .Values.env.initScriptEnd }}"
             - name: INIT_SCRIPT_SEPARATOR
               value: "{{ .Values.env.initScriptSeparator }}"
+            - name: RESOURCE_ESTIMATION_SERVICE
+              value: "{{ .Values.env.resourceEstimationService }}"
           livenessProbe:
             httpGet:
               path: /healthz
