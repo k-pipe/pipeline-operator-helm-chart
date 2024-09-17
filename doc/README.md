@@ -11,6 +11,7 @@ an extension of kubernetes to define, execute and schedule processing pipelines 
     - [3.1.1 - Kubernetes settings](#311---kubernetes-settings)
     - [3.1.2 - Image repository classification](#312---image-repository-classification)
     - [3.1.3 - Init container](#313---init-container)
+    - [3.1.4 - Resource estimation](#314---resource-estimation)
 
 ## 1 - Introduction
 
@@ -92,3 +93,21 @@ The actions of the init container are specified by the following helm variables:
 | initScriptSeparator | string | " && "                                | separator string to be used for joining the init script                                     |
 
 The init script will be joined into one string (using the specified separator) that will be passed as one argument in the pod spec.
+
+### 3.1.4 - Resource estimation
+
+Resource estimation is a feature that relies on external service that provides recommendations 
+on how to set resource requests in the pipeline step jobs. It tries to minimize the 
+footprint of pods to reduce energy consumption (and thus at the same time costs and CO2 production)
+without jeopardizing the successful execution of jobs. 
+
+Resource estimation is also required to allow GPU use in pipeline steps (because availability 
+of GPU types depends on multiple factors and is not stable). 
+
+There is (currently) only one helm parameter relevant for resource estimation (because, at this moment,
+resource estimation does nothing else than requesting the specified maximal values):
+
+| Variable                  | Type   | Default                           | Description                                                                                                  |
+|---------------------------|--------|-----------------------------------|--------------------------------------------------------------------------------------------------------------|
+| resourceEstimationService | string | ""                                | set this to "https://europe-west3-k-pipe-server.cloudfunctions.net/resource-estimation" ton enable GPU usage |
+
