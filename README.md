@@ -76,13 +76,15 @@ Observe the operator spinning up a pod:
 kubectl get pods -w
 ```
 
+When the pod has reached state `Terminating` you may stop pressing `Ctrl-c`.
+
 Alternatively, restart the run and now follow the state of the pipeline execution looking at the run resource (`pr` is an
 abbreviation for `pipelinerun`):
 
 ```
 kubectl delete -f run.yaml
 kubectl apply -f run.yaml
-kubectl get pr test-run -w
+kubectl get pr my-first-run -w
 ```
 
 If you interrupt (with `CTRL-c`) **while** the pod is still *running*, you may check the logs:
