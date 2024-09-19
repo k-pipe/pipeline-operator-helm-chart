@@ -93,6 +93,9 @@ If you interrupt (with `CTRL-c`) **while** the pod is still *running*, you may c
 kubectl logs job/my-first-run-step1 -c main
 ```
 
+If you wait too long, the pod will be gone (the operator cleans up succeeded jobs/pods after termination), 
+but in the full documentation we will describe a better way to access the logs, anyway... 
+
 ### Schedule a pipeline
 
 Create the file `schedule.yaml`:
