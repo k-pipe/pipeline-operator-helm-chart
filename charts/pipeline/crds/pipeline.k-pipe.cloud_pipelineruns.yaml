@@ -192,13 +192,27 @@ spec:
                           x-kubernetes-preserve-unknown-fields: true
                         description:
                           type: string
+                        dockerimage:
+                          description: DockerImageSpec defines docker image used to
+                            run a job
+                          properties:
+                            image:
+                              type: string
+                            provider:
+                              type: string
+                            repository:
+                              type: string
+                            tag:
+                              type: string
+                          required:
+                          - image
+                          type: object
                         id:
                           type: string
                         image:
                           type: string
                       required:
                       - id
-                      - image
                       type: object
                     type: array
                   pipes:
