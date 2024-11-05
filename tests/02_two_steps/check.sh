@@ -1,7 +1,8 @@
 #/bin/sh
 #
 echo debug
-kubectl get pods -w
+kubectl get pr -w
+#kubectl get pods -w
 
 echo waiting for step-b to complete
 kubectl wait --for=condition=PVCDeleted-step-b --timeout=60s pr/test-run
