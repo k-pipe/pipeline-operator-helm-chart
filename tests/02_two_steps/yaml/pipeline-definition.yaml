@@ -3,7 +3,7 @@ kind: PipelineDefinition
 metadata:
   name: two-steps-0.0.1
 spec:
-  name: two-steps
+  pipelineName: two-steps
   version: 0.0.1
   pipelineStructure:
     jobSteps:

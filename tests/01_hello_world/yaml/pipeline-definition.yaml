@@ -3,7 +3,7 @@ kind: PipelineDefinition
 metadata:
   name: hello-world-0.0.1
 spec:
-  name: hello-world
+  pipelineName: hello-world
   version: 0.0.1
   pipelineStructure:
     jobSteps:
