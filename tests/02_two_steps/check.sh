@@ -1,6 +1,24 @@
 #/bin/sh
 #
 echo debug
+kubectl get pr
+kubectl get pj
+sleep 1
+kubectl get pr
+kubectl get pj
+sleep 1
+kubectl get pr
+kubectl get pj
+sleep 1
+kubectl get pr
+kubectl get pj
+sleep 1
+kubectl get pr
+kubectl get pj
+sleep 1
+kubectl get pr
+kubectl get pj
+sleep 1
 kubectl get pr -w
 #kubectl get pods -w
 
