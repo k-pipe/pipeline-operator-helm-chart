@@ -6,6 +6,10 @@ bash tests/ensureKindExists.sh
 echo ""
 cat "$1"description.txt
 echo ""
+echo "XXXXXXXXXXXXXXX"
+echo "Jobs:"
+kubectl get pj
+echo "XXXXXXXXXXXXXXX"
 echo Applying yamls
 kubectl apply -f "$1"yaml/
 if [[ $? != 0 ]]
