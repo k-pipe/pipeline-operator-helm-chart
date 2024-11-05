@@ -29,7 +29,7 @@ kind: PipelineDefinition
 metadata:
   name: "hello-world-1.0.0"
 spec:
-  name: "hello-world"
+  pipelineName: "hello-world"
   version: "1.0.0"
   pipelineStructure:
     jobSteps:
