@@ -1,12 +1,8 @@
 #/bin/sh
 #
-echo checking pipeline run exists
-#kubectl get pr test-run
-if [[ $? != 0 ]]
-then
-   exit 1
-fi
-sleep 2
+echo debug
+kubectl get pods -w
+
 echo waiting for step-b to complete
 kubectl wait --for=condition=PVCDeleted-step-b --timeout=60s pr/test-run
 if [[ $? != 0 ]]
