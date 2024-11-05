@@ -7,6 +7,9 @@ echo ""
 cat "$1"description.txt
 echo ""
 echo "XXXXXXXXXXXXXXX"
+echo "PipelineDefinitions:"
+kubectl get pd
+echo "XXXXXXXXXXXXXXX"
 echo "Jobs:"
 kubectl get pj
 echo "XXXXXXXXXXXXXXX"
