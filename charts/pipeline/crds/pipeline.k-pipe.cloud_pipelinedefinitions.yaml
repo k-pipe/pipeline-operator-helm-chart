@@ -60,7 +60,54 @@ spec:
             properties:
               description:
                 type: string
-              name:
+              jobSpecs:
+                items:
+                  description: PipelineSharedJobStepSpec defines config or jobspecs
+                    that are shared accross multiple steps
+                  properties:
+                    config:
+                      x-kubernetes-preserve-unknown-fields: true
+                    jobSpec:
+                      description: JobSpec encapsulates the details of the kubernetes
+                        job wrapped by PipelineJob
+                      properties:
+                        activeDeadlineSeconds:
+                          format: int64
+                          type: integer
+                        backoffLimit:
+                          format: int32
+                          type: integer
+                        imagePullPolicy:
+                          description: PullPolicy describes a policy for if/when to
+                            pull a container image
+                          type: string
+                        maxCPU:
+                          type: string
+                        maxGpuMemory:
+                          type: string
+                        maxMemory:
+                          type: string
+                        maxStorage:
+                          type: string
+                        serviceAccountName:
+                          type: string
+                        specification:
+                          x-kubernetes-preserve-unknown-fields: true
+                        terminationGracePeriodSeconds:
+                          format: int64
+                          type: integer
+                        ttlSecondsAfterFinished:
+                          format: int32
+                          type: integer
+                      type: object
+                    stepPattern:
+                      type: string
+                  required:
+                  - jobSpec
+                  - stepPattern
+                  type: object
+                type: array
+              pipelineName:
                 type: string
               pipelineStructure:
                 description: PipelineStructure holds the information of steps and
@@ -87,7 +134,7 @@ spec:
                           description: DockerImageSpec defines docker image used to
                             run a job
                           properties:
-                            image:
+                            name:
                               type: string
                             provider:
                               type: string
@@ -96,11 +143,13 @@ spec:
                             tag:
                               type: string
                           required:
-                          - image
+                          - name
                           type: object
                         id:
                           type: string
                         image:
+                          type: string
+                        workdir:
                           type: string
                       required:
                       - id
@@ -136,55 +185,6 @@ spec:
                       required:
                       - from
                       - to
-                      type: object
-                    type: array
-                  sharedSpecs:
-                    items:
-                      description: PipelineSharedJobStepSpec defines config or jobspecs
-                        that are shared accross multiple steps
-                      properties:
-                        config:
-                          x-kubernetes-preserve-unknown-fields: true
-                        jobSpec:
-                          description: JobSpec encapsulates the details of the kubernetes
-                            job wrapped by PipelineJob
-                          properties:
-                            activeDeadlineSeconds:
-                              format: int64
-                              type: integer
-                            backoffLimit:
-                              format: int32
-                              type: integer
-                            imagePullPolicy:
-                              description: PullPolicy describes a policy for if/when
-                                to pull a container image
-                              type: string
-                            maxCPU:
-                              type: string
-                            maxGpuMemory:
-                              type: string
-                            maxMemory:
-                              type: string
-                            maxStorage:
-                              type: string
-                            serviceAccountName:
-                              type: string
-                            specification:
-                              x-kubernetes-preserve-unknown-fields: true
-                            terminationGracePeriodSeconds:
-                              format: int64
-                              type: integer
-                            ttlSecondsAfterFinished:
-                              format: int32
-                              type: integer
-                            workingDir:
-                              type: string
-                          type: object
-                        stepPattern:
-                          type: string
-                      required:
-                      - jobSpec
-                      - stepPattern
                       type: object
                     type: array
                   subPipelines:
@@ -246,14 +246,12 @@ spec:
                     ttlSecondsAfterFinished:
                       format: int32
                       type: integer
-                    workingDir:
-                      type: string
                   type: object
                 type: array
               version:
                 type: string
             required:
-            - name
+            - pipelineName
             - pipelineStructure
             - version
             type: object

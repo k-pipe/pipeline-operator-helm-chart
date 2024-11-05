@@ -123,8 +123,6 @@ spec:
                   ttlSecondsAfterFinished:
                     format: int32
                     type: integer
-                  workingDir:
-                    type: string
                 type: object
               pipelineName:
                 type: string
@@ -137,6 +135,8 @@ spec:
               runUID:
                 type: string
               stepId:
+                type: string
+              workingDir:
                 type: string
             required:
             - id

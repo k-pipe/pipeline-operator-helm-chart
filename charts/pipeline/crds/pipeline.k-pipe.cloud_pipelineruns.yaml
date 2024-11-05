@@ -171,83 +171,13 @@ spec:
                 type: integer
               numStepsTotal:
                 type: integer
-              pipelineStructure:
-                description: PipelineStructure holds the information of steps and
-                  pipes that constitute a pipeline
+              pipelineDefinition:
+                description: PipelineDefinitionSpec holds the definition of the pipeline
+                  structure, the configuration of steps, and meta information
                 properties:
-                  jobSteps:
-                    items:
-                      description: PipelineJobStepSpec defines details of a pipeline
-                        step that will run as a job
-                      properties:
-                        args:
-                          items:
-                            type: string
-                          type: array
-                        command:
-                          items:
-                            type: string
-                          type: array
-                        config:
-                          x-kubernetes-preserve-unknown-fields: true
-                        description:
-                          type: string
-                        dockerimage:
-                          description: DockerImageSpec defines docker image used to
-                            run a job
-                          properties:
-                            image:
-                              type: string
-                            provider:
-                              type: string
-                            repository:
-                              type: string
-                            tag:
-                              type: string
-                          required:
-                          - image
-                          type: object
-                        id:
-                          type: string
-                        image:
-                          type: string
-                      required:
-                      - id
-                      type: object
-                    type: array
-                  pipes:
-                    items:
-                      description: PipelinePipe defines details of a pipe connection
-                        between two pipeline steps
-                      properties:
-                        from:
-                          description: PipelineConnector defines step and pipe name
-                            at either end of a pipe
-                          properties:
-                            name:
-                              type: string
-                            stepId:
-                              type: string
-                          required:
-                          - stepId
-                          type: object
-                        to:
-                          description: PipelineConnector defines step and pipe name
-                            at either end of a pipe
-                          properties:
-                            name:
-                              type: string
-                            stepId:
-                              type: string
-                          required:
-                          - stepId
-                          type: object
-                      required:
-                      - from
-                      - to
-                      type: object
-                    type: array
-                  sharedSpecs:
+                  description:
+                    type: string
+                  jobSpecs:
                     items:
                       description: PipelineSharedJobStepSpec defines config or jobspecs
                         that are shared accross multiple steps
@@ -286,8 +216,6 @@ spec:
                             ttlSecondsAfterFinished:
                               format: int32
                               type: integer
-                            workingDir:
-                              type: string
                           type: object
                         stepPattern:
                           type: string
@@ -296,29 +224,153 @@ spec:
                       - stepPattern
                       type: object
                     type: array
-                  subPipelines:
+                  pipelineName:
+                    type: string
+                  pipelineStructure:
+                    description: PipelineStructure holds the information of steps
+                      and pipes that constitute a pipeline
+                    properties:
+                      jobSteps:
+                        items:
+                          description: PipelineJobStepSpec defines details of a pipeline
+                            step that will run as a job
+                          properties:
+                            args:
+                              items:
+                                type: string
+                              type: array
+                            command:
+                              items:
+                                type: string
+                              type: array
+                            config:
+                              x-kubernetes-preserve-unknown-fields: true
+                            description:
+                              type: string
+                            dockerimage:
+                              description: DockerImageSpec defines docker image used
+                                to run a job
+                              properties:
+                                name:
+                                  type: string
+                                provider:
+                                  type: string
+                                repository:
+                                  type: string
+                                tag:
+                                  type: string
+                              required:
+                              - name
+                              type: object
+                            id:
+                              type: string
+                            image:
+                              type: string
+                            workdir:
+                              type: string
+                          required:
+                          - id
+                          type: object
+                        type: array
+                      pipes:
+                        items:
+                          description: PipelinePipe defines details of a pipe connection
+                            between two pipeline steps
+                          properties:
+                            from:
+                              description: PipelineConnector defines step and pipe
+                                name at either end of a pipe
+                              properties:
+                                name:
+                                  type: string
+                                stepId:
+                                  type: string
+                              required:
+                              - stepId
+                              type: object
+                            to:
+                              description: PipelineConnector defines step and pipe
+                                name at either end of a pipe
+                              properties:
+                                name:
+                                  type: string
+                                stepId:
+                                  type: string
+                              required:
+                              - stepId
+                              type: object
+                          required:
+                          - from
+                          - to
+                          type: object
+                        type: array
+                      subPipelines:
+                        items:
+                          description: SubPipelineSpec defines details of a pipeline
+                            step that will run as a sub-pipeline
+                          properties:
+                            batched:
+                              type: boolean
+                            description:
+                              type: string
+                            id:
+                              type: string
+                            namespace:
+                              type: string
+                            pipelineName:
+                              type: string
+                            versionPattern:
+                              type: string
+                          required:
+                          - id
+                          - pipelineName
+                          - versionPattern
+                          type: object
+                        type: array
+                    type: object
+                  plantUML:
+                    type: string
+                  terminationJobs:
                     items:
-                      description: SubPipelineSpec defines details of a pipeline step
-                        that will run as a sub-pipeline
+                      description: JobSpec encapsulates the details of the kubernetes
+                        job wrapped by PipelineJob
                       properties:
-                        batched:
-                          type: boolean
-                        description:
+                        activeDeadlineSeconds:
+                          format: int64
+                          type: integer
+                        backoffLimit:
+                          format: int32
+                          type: integer
+                        imagePullPolicy:
+                          description: PullPolicy describes a policy for if/when to
+                            pull a container image
                           type: string
-                        id:
+                        maxCPU:
                           type: string
-                        namespace:
+                        maxGpuMemory:
                           type: string
-                        pipelineName:
+                        maxMemory:
                           type: string
-                        versionPattern:
+                        maxStorage:
                           type: string
-                      required:
-                      - id
-                      - pipelineName
-                      - versionPattern
+                        serviceAccountName:
+                          type: string
+                        specification:
+                          x-kubernetes-preserve-unknown-fields: true
+                        terminationGracePeriodSeconds:
+                          format: int64
+                          type: integer
+                        ttlSecondsAfterFinished:
+                          format: int32
+                          type: integer
                       type: object
                     type: array
+                  version:
+                    type: string
+                required:
+                - pipelineName
+                - pipelineStructure
+                - version
                 type: object
               pipelineVersion:
                 type: string
