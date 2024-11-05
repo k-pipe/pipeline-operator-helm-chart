@@ -1,9 +1,16 @@
 #/bin/sh
 #
 echo debug
+echo "-----------"
+echo "Pipeline runs:"
 kubectl get pr
+echo "-----------"
+echo "Pipeline jobs:"
 kubectl get pj
-sleep 1
+echo "-----------"
+kubectl logs deployment/k-pipe-operator -n k-pipe
+echo "-----------"
+exit 1
 kubectl get pr
 kubectl get pj
 sleep 1
