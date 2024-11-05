@@ -8,7 +8,7 @@ then
 fi
 sleep 2
 echo waiting for step-b to complete
-kubectl wait --for=condition=Succeeded --timeout=60s pj/test-run-step-b
+kubectl wait --for=condition=PVCDeleted-step-b --timeout=60s pr/test-run
 if [[ $? != 0 ]]
 then
    exit 1
