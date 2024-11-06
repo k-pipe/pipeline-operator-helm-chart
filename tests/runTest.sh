@@ -8,10 +8,10 @@ cat "$1"description.txt
 echo ""
 echo "XXXXXXXXXXXXXXX"
 echo "PipelineDefinitions:"
-kubectl get pd
+kubectl get pd --all-namespaces
 echo "XXXXXXXXXXXXXXX"
 echo "Jobs:"
-kubectl get pj
+kubectl get pj  --all-namespaces
 echo "XXXXXXXXXXXXXXX"
 echo Applying yamls
 kubectl apply -f "$1"yaml/
@@ -61,6 +61,22 @@ then
 fi
 echo No problems in operator logs detected
 
+echo ""
+echo "XXXXXXXXXXXXXXX"
+echo "PipelineDefinitions:"
+kubectl get pd --all-namespaces
+echo "XXXXXXXXXXXXXXX"
+echo "Jobs:"
+kubectl get pj  --all-namespaces
+echo "XXXXXXXXXXXXXXX"
 echo deleting test resources
 kubectl delete -f "$1"yaml/
 
+echo ""
+echo "XXXXXXXXXXXXXXX"
+echo "PipelineDefinitions:"
+kubectl get pd --all-namespaces
+echo "XXXXXXXXXXXXXXX"
+echo "Jobs:"
+kubectl get pj  --all-namespaces
+echo "XXXXXXXXXXXXXXX"
