@@ -12,4 +12,5 @@ rules:
       - create
       - get
       - list
+      - watch
 {{- end }}
