@@ -71,6 +71,7 @@ kubectl get pj  --all-namespaces
 echo "XXXXXXXXXXXXXXX"
 echo deleting test resources
 kubectl delete -f "$1"yaml/
+kubectl delete pipelinejobs --all
 
 echo ""
 echo "XXXXXXXXXXXXXXX"
