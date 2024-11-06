@@ -8,9 +8,9 @@ echo "-----------"
 echo "Pipeline jobs:"
 kubectl get pj
 echo "-----------"
-kubectl logs deployment/k-pipe-operator -n k-pipe  | sed 's# *{.*$##'
-echo "-----------"
-exit 1
+#kubectl logs deployment/k-pipe-operator -n k-pipe  | sed 's# *{.*$##'
+#echo "-----------"
+#exit 1
 kubectl get pr
 kubectl get pj
 sleep 1
