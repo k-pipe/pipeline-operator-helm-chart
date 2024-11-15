@@ -136,6 +136,41 @@ spec:
                 type: string
               stepId:
                 type: string
+              terminationJobs:
+                items:
+                  description: JobSpec encapsulates the details of the kubernetes
+                    job wrapped by PipelineJob
+                  properties:
+                    activeDeadlineSeconds:
+                      format: int64
+                      type: integer
+                    backoffLimit:
+                      format: int32
+                      type: integer
+                    imagePullPolicy:
+                      description: PullPolicy describes a policy for if/when to pull
+                        a container image
+                      type: string
+                    maxCPU:
+                      type: string
+                    maxGpuMemory:
+                      type: string
+                    maxMemory:
+                      type: string
+                    maxStorage:
+                      type: string
+                    serviceAccountName:
+                      type: string
+                    specification:
+                      x-kubernetes-preserve-unknown-fields: true
+                    terminationGracePeriodSeconds:
+                      format: int64
+                      type: integer
+                    ttlSecondsAfterFinished:
+                      format: int32
+                      type: integer
+                  type: object
+                type: array
               workingDir:
                 type: string
             required:
