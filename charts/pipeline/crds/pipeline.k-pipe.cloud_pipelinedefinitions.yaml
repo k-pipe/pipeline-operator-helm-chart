@@ -115,7 +115,7 @@ spec:
                 properties:
                   jobSteps:
                     items:
-                      description: PipelineJobStepSpec defines details of a pipeline
+                      description: PipelineWorkloadSpec defines details of a pipeline
                         step that will run as a job
                       properties:
                         args:
@@ -213,39 +213,170 @@ spec:
                 type: object
               plantUML:
                 type: string
-              terminationJobs:
+              runFinalizers:
                 items:
-                  description: JobSpec encapsulates the details of the kubernetes
-                    job wrapped by PipelineJob
+                  description: TerminationJob holds the definition of a job to be
+                    executed after job termination
                   properties:
-                    activeDeadlineSeconds:
-                      format: int64
-                      type: integer
-                    backoffLimit:
-                      format: int32
-                      type: integer
-                    imagePullPolicy:
-                      description: PullPolicy describes a policy for if/when to pull
-                        a container image
-                      type: string
-                    maxCPU:
-                      type: string
-                    maxGpuMemory:
-                      type: string
-                    maxMemory:
-                      type: string
-                    maxStorage:
-                      type: string
-                    serviceAccountName:
-                      type: string
-                    specification:
-                      x-kubernetes-preserve-unknown-fields: true
-                    terminationGracePeriodSeconds:
-                      format: int64
-                      type: integer
-                    ttlSecondsAfterFinished:
-                      format: int32
-                      type: integer
+                    jobSpec:
+                      description: JobSpec encapsulates the details of the kubernetes
+                        job wrapped by PipelineJob
+                      properties:
+                        activeDeadlineSeconds:
+                          format: int64
+                          type: integer
+                        backoffLimit:
+                          format: int32
+                          type: integer
+                        imagePullPolicy:
+                          description: PullPolicy describes a policy for if/when to
+                            pull a container image
+                          type: string
+                        maxCPU:
+                          type: string
+                        maxGpuMemory:
+                          type: string
+                        maxMemory:
+                          type: string
+                        maxStorage:
+                          type: string
+                        serviceAccountName:
+                          type: string
+                        specification:
+                          x-kubernetes-preserve-unknown-fields: true
+                        terminationGracePeriodSeconds:
+                          format: int64
+                          type: integer
+                        ttlSecondsAfterFinished:
+                          format: int32
+                          type: integer
+                      type: object
+                    workloadSpec:
+                      description: PipelineWorkloadSpec defines details of a pipeline
+                        step that will run as a job
+                      properties:
+                        args:
+                          items:
+                            type: string
+                          type: array
+                        command:
+                          items:
+                            type: string
+                          type: array
+                        config:
+                          x-kubernetes-preserve-unknown-fields: true
+                        description:
+                          type: string
+                        dockerimage:
+                          description: DockerImageSpec defines docker image used to
+                            run a job
+                          properties:
+                            name:
+                              type: string
+                            provider:
+                              type: string
+                            repository:
+                              type: string
+                            tag:
+                              type: string
+                          required:
+                          - name
+                          type: object
+                        id:
+                          type: string
+                        image:
+                          type: string
+                        workdir:
+                          type: string
+                      required:
+                      - id
+                      type: object
+                  required:
+                  - jobSpec
+                  - workloadSpec
+                  type: object
+                type: array
+              stepFinalizers:
+                items:
+                  description: TerminationJob holds the definition of a job to be
+                    executed after job termination
+                  properties:
+                    jobSpec:
+                      description: JobSpec encapsulates the details of the kubernetes
+                        job wrapped by PipelineJob
+                      properties:
+                        activeDeadlineSeconds:
+                          format: int64
+                          type: integer
+                        backoffLimit:
+                          format: int32
+                          type: integer
+                        imagePullPolicy:
+                          description: PullPolicy describes a policy for if/when to
+                            pull a container image
+                          type: string
+                        maxCPU:
+                          type: string
+                        maxGpuMemory:
+                          type: string
+                        maxMemory:
+                          type: string
+                        maxStorage:
+                          type: string
+                        serviceAccountName:
+                          type: string
+                        specification:
+                          x-kubernetes-preserve-unknown-fields: true
+                        terminationGracePeriodSeconds:
+                          format: int64
+                          type: integer
+                        ttlSecondsAfterFinished:
+                          format: int32
+                          type: integer
+                      type: object
+                    workloadSpec:
+                      description: PipelineWorkloadSpec defines details of a pipeline
+                        step that will run as a job
+                      properties:
+                        args:
+                          items:
+                            type: string
+                          type: array
+                        command:
+                          items:
+                            type: string
+                          type: array
+                        config:
+                          x-kubernetes-preserve-unknown-fields: true
+                        description:
+                          type: string
+                        dockerimage:
+                          description: DockerImageSpec defines docker image used to
+                            run a job
+                          properties:
+                            name:
+                              type: string
+                            provider:
+                              type: string
+                            repository:
+                              type: string
+                            tag:
+                              type: string
+                          required:
+                          - name
+                          type: object
+                        id:
+                          type: string
+                        image:
+                          type: string
+                        workdir:
+                          type: string
+                      required:
+                      - id
+                      type: object
+                  required:
+                  - jobSpec
+                  - workloadSpec
                   type: object
                 type: array
               version:
