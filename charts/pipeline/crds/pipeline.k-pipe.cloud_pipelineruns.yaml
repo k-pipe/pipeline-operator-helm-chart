@@ -71,10 +71,25 @@ spec:
             properties:
               description:
                 type: string
-              inputPipes:
+              inputs:
                 items:
-                  type: string
+                  description: RunInput defines assignments of input PVCs for runs
+                    called from a parent run
+                  properties:
+                    file:
+                      type: string
+                    id:
+                      type: string
+                    pvc:
+                      type: string
+                  required:
+                  - file
+                  - id
+                  - pvc
+                  type: object
                 type: array
+              output:
+                type: string
               parentRun:
                 type: string
               pipelineName:
@@ -230,6 +245,43 @@ spec:
                     description: PipelineStructure holds the information of steps
                       and pipes that constitute a pipeline
                     properties:
+                      interface:
+                        items:
+                          description: PipelineInterface defines the interface for
+                            pipelines that can be called by other pipelines
+                          properties:
+                            inputs:
+                              items:
+                                description: PipelineInput defines the input arguments
+                                  to be set from outside
+                                properties:
+                                  description:
+                                    type: string
+                                  id:
+                                    type: string
+                                  to:
+                                    description: PipelineConnector defines step and
+                                      pipe name at either end of a pipe
+                                    properties:
+                                      name:
+                                        type: string
+                                      stepId:
+                                        type: string
+                                    required:
+                                    - stepId
+                                    type: object
+                                required:
+                                - id
+                                - to
+                                type: object
+                              type: array
+                            outputStep:
+                              type: string
+                          required:
+                          - inputs
+                          - outputStep
+                          type: object
+                        type: array
                       jobSteps:
                         items:
                           description: PipelineWorkloadSpec defines details of a pipeline
