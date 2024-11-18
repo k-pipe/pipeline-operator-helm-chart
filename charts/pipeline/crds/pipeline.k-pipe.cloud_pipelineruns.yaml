@@ -246,42 +246,39 @@ spec:
                       and pipes that constitute a pipeline
                     properties:
                       interface:
-                        items:
-                          description: PipelineInterface defines the interface for
-                            pipelines that can be called by other pipelines
-                          properties:
-                            inputs:
-                              items:
-                                description: PipelineInput defines the input arguments
-                                  to be set from outside
-                                properties:
-                                  description:
-                                    type: string
-                                  id:
-                                    type: string
-                                  to:
-                                    description: PipelineConnector defines step and
-                                      pipe name at either end of a pipe
-                                    properties:
-                                      name:
-                                        type: string
-                                      stepId:
-                                        type: string
-                                    required:
-                                    - stepId
-                                    type: object
-                                required:
-                                - id
-                                - to
-                                type: object
-                              type: array
-                            outputStep:
-                              type: string
-                          required:
-                          - inputs
-                          - outputStep
-                          type: object
-                        type: array
+                        description: PipelineInterface defines the interface for pipelines
+                          that can be called by other pipelines
+                        properties:
+                          inputs:
+                            items:
+                              description: PipelineInput defines the input arguments
+                                to be set from outside
+                              properties:
+                                description:
+                                  type: string
+                                id:
+                                  type: string
+                                to:
+                                  description: PipelineConnector defines step and
+                                    pipe name at either end of a pipe
+                                  properties:
+                                    name:
+                                      type: string
+                                    stepId:
+                                      type: string
+                                  required:
+                                  - stepId
+                                  type: object
+                              required:
+                              - id
+                              - to
+                              type: object
+                            type: array
+                          outputStep:
+                            type: string
+                        required:
+                        - inputs
+                        type: object
                       jobSteps:
                         items:
                           description: PipelineWorkloadSpec defines details of a pipeline
@@ -329,6 +326,8 @@ spec:
                           description: PipelinePipe defines details of a pipe connection
                             between two pipeline steps
                           properties:
+                            batched:
+                              type: boolean
                             from:
                               description: PipelineConnector defines step and pipe
                                 name at either end of a pipe
@@ -559,6 +558,10 @@ spec:
                 type: string
               status:
                 type: string
+              terminationLogs:
+                additionalProperties:
+                  type: string
+                type: object
             required:
             - numStepsActive
             - numStepsFailed

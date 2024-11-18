@@ -193,6 +193,8 @@ spec:
                     format: int32
                     type: integer
                 type: object
+              output:
+                type: string
               pipelineName:
                 type: string
               pipelineRun:
@@ -245,6 +247,7 @@ spec:
                 type: object
             required:
             - jobSpec
+            - output
             - pipelineName
             - pipelineRun
             - pipelineVersion
