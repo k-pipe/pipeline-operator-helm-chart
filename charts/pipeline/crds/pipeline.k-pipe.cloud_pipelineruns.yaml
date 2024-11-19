@@ -90,8 +90,21 @@ spec:
                 type: array
               output:
                 type: string
-              parentRun:
-                type: string
+              parent:
+                description: ParentSpec defines the coordindates of a calling parent
+                  pipeline run
+                properties:
+                  namespace:
+                    type: string
+                  run:
+                    type: string
+                  stepId:
+                    type: string
+                required:
+                - namespace
+                - run
+                - stepId
+                type: object
               pipelineName:
                 type: string
               versionPattern:
