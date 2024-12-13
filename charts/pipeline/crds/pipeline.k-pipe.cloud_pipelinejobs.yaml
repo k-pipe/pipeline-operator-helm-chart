@@ -332,6 +332,22 @@ spec:
               lastUpdate:
                 format: date-time
                 type: string
+              podResults:
+                additionalProperties:
+                  description: PodResults gives the final result of all pods
+                  properties:
+                    exitCode:
+                      format: int32
+                      type: integer
+                    signal:
+                      format: int32
+                      type: integer
+                    terminationLogs:
+                      type: string
+                    terminationReason:
+                      type: string
+                  type: object
+                type: object
               status:
                 type: string
             type: object
