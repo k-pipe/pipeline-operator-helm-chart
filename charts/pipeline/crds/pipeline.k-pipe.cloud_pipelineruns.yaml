@@ -573,7 +573,9 @@ spec:
                 type: string
               terminationLogs:
                 additionalProperties:
-                  type: string
+                  additionalProperties:
+                    type: string
+                  type: object
                 type: object
             required:
             - numStepsActive
