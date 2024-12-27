@@ -195,6 +195,10 @@ spec:
                 type: object
               output:
                 type: string
+              parameters:
+                additionalProperties:
+                  type: string
+                type: object
               pipelineName:
                 type: string
               pipelineRun:
