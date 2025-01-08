@@ -63,6 +63,10 @@ spec:
           spec:
             description: ScheduleSpec defines the desired state of Schedule
             properties:
+              parameters:
+                additionalProperties:
+                  type: string
+                type: object
               pipelineName:
                 type: string
               schedules:
@@ -78,10 +82,6 @@ spec:
                       description: https://stackoverflow.com/questions/14203122/create-a-regular-expression-for-cron-statement
                       pattern: ^.*$
                       type: string
-                    parameters:
-                      additionalProperties:
-                        type: string
-                      type: object
                     timeZone:
                       description: timezone to be used for cronjob
                       type: string
